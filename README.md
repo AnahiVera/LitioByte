@@ -52,7 +52,7 @@ These exact versions were used during development:
 
  **1. Clone the repository**  
    ```bash
-   git clone 
+   git clone https://github.com/AnahiVera/LitioByte
    cd LitioByte-Anahi
    ```
 
