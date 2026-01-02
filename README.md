@@ -79,10 +79,24 @@ These exact versions were used during development:
   - Bash/zsh for automation (`start.sh`)
 
 ## Notes
-A ticket with status `closed` represents a finalized workflow and cannot be reopened to ensure traceability and data consistency.
 
-Ticket status transitions are sequential and unidirectional:
+### Create endpoint
+Ticket creation is managed by the backend to keep the process simple and consistent. 
+To create a ticket, title and a description are required and cannot be empty. The priority is optional and can be set to low, medium, or high; if it is not provided, automatically assigns low. Other values are handled internally: ID is generated automatically, the initial status is always set to open, and the creation date is added by the system at the moment the ticket is created. By controlling these values on the backend, it avoids incorrect data, ensures a clear starting state for every ticket.
+
+### Listing endpoint
+For listing and sorting, the endpoint accepts optional parameters to filter tickets by status and to sort them either by priority or by creation date. Only valid statuses (open, in_progress, closed) and valid sorting options (priority, createdAt) are allowed; if an invalid value is provided, the request is rejected to avoid ambiguous or incorrect results. When a status is specified, only tickets with that status are returned. When sorting is requested, tickets are ordered either by priority (from high to low) or by their creation date 
+Example:
+http://localhost:3001/tickets?status=open&sort=priority
+
+
+### Change status endpoint
+A ticket with status `closed` represents a finalized workflow and cannot be reopened to ensure traceability and data consistency. Ticket status transitions are sequential and unidirectional:
 `open → in_progress → closed`
-Reverse transitions are not allowed.
+Reverse or skipped transitions are not allowed.
+
+
+### Out of scope / Decisions
+When creating a ticket, if fields such as id, createdAt, or a status different from open are sent, the request is not rejected but corrected by the backend. This decision was made assuming a frontend would normally prevent sending these values. In case of incorrect or forced input, the backend still accepts the request and normalizes the data instead of failing.
 
 ---
