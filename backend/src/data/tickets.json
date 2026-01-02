@@ -1,0 +1,27 @@
+
+[
+  {
+    "id": "1",
+    "title": "No puedo iniciar sesión",
+    "description": "El usuario recibe error al ingresar sus credenciales",
+    "priority": "high",
+    "status": "open",
+    "createdAt": "2025-01-01T10:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "title": "Bug visual en dashboard",
+    "description": "El botón se superpone en mobile",
+    "priority": "medium",
+    "status": "in_progress",
+    "createdAt": "2025-01-02T15:30:00.000Z"
+  },
+  {
+    "id": "3",
+    "title": "Solicitud de mejora",
+    "description": "Agregar exportación a CSV",
+    "priority": "low",
+    "status": "closed",
+    "createdAt": "2025-01-03T09:45:00.000Z"
+  }
+]
